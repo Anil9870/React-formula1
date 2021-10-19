@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import Loader from './Loader';
 import { fecthConstructors } from '../redux/ActionCreators';
@@ -8,8 +8,10 @@ import { connect } from 'react-redux';
 
 
 const Constructors = ({ constructors, fecthConstructors }) => {
+
+    const [year, setYear] = useState(new Date().getFullYear());
     useEffect(() => {
-        fecthConstructors();
+        fecthConstructors(year);
     }, []);
 
     const renderConstructors = constructors.constructors.map((constructor) => {
@@ -33,10 +35,28 @@ const Constructors = ({ constructors, fecthConstructors }) => {
         );
     });
 
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        fecthConstructors(year);
+    }
+
     return (
         <div className="container">
             {constructors.isLoading && constructors.errMess === null ? <Loader /> :
                 <div>
+                    <div className="row">
+                        <div className="col-6">
+                            <form onSubmit={e => handleOnSubmit(e)}>
+                                <div class="form-group">
+                                    <input type="text" onChange={(e) => setYear(e.target.value)} class="form-control" id="searchText" placeholder="Enter Year To Get Constructor Details" />
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                        <div className="col">
+                            <h1>F1 CONSTRUCTORS LIST</h1>
+                        </div>
+                    </div>
                     {renderConstructors}
                 </div>}
         </div>

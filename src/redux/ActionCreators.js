@@ -20,10 +20,10 @@ const processDrivers = (drivers) => {
 }
 
 
-export const fetchDrivers = () => (dispatch) => {
+export const fetchDrivers = (year) => (dispatch) => {
     dispatch(driversLoading());
 
-    return axios.get(`http://ergast.com/api/f1/${new Date().getFullYear()}/drivers`)
+    return axios.get(`http://ergast.com/api/f1/${year}/drivers`)
         .then((response) => {
             console.log(response);
             // if (response.data.statusText.ok) {
@@ -73,9 +73,9 @@ const processConstructors = (constructors) => {
 
 }
 
-export const fecthConstructors = () => (dispatch) => {
+export const fecthConstructors = (year) => (dispatch) => {
     dispatch(constructorsLoading());
-    return axios.get(`http://ergast.com/api/f1/${new Date().getFullYear()}/constructors`)
+    return axios.get(`http://ergast.com/api/f1/${year}/constructors`)
         .then((response) => {
             const jsonDataFromXml = new XMLParser().parseFromString(response.data);
             return processConstructors(jsonDataFromXml.children[0].children);
