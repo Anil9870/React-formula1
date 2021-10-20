@@ -27,4 +27,17 @@ td,th {
   font-size: 20px;
 }
 
+.home-img {
+  width: 400px;
+  height: 400px;
+  object-fit: fill;
+  margin-top: 10px;
+}
 
+.space-above{
+  margin-top: 30px;
+}
+
+.home-corousel {
+  margin-bottom: 30px;
+}
