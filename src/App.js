@@ -7,6 +7,7 @@ import Constructors from './components/SeasonConstructors';
 import { Provider } from "react-redux";
 import {ConfigureStore} from './redux/ConfigureStore';
 import SeasonDriverStandings from './components/SeasonDriverStandings';
+import SeasonConstructorStandings from './components/SeasonConstructorStandings';
 
 const store = ConfigureStore();
 
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/drivers" component={CurrentSeasonDrivers}/>
           <Route exact path="/constructors" component={Constructors}/>
           <Route exact path="/drivers-standings" component={SeasonDriverStandings}/>
+          <Route exact path="/constructors-standings" component={SeasonConstructorStandings}/>
           <Redirect to="/home" />
         </Switch>
       </Router>

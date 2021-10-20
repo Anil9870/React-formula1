@@ -28,7 +28,7 @@ const SeasonDriverStandings = ({ driversStandings, fetchDriversStandings }) => {
             );
         });
 
-        return (<Table striped bordered hover>
+        return (<Table striped bordered hover variant="dark">
             <thead>
                 <tr>
                     <th>Standings</th>

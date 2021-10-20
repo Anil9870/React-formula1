@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { GiF1Car } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
-import { BsFillPersonBadgeFill } from "react-icons/bs";
 
 
 const Header = props => {
@@ -26,6 +25,9 @@ const Header = props => {
             </NavLink>
             <NavLink className="nav-link" to="/drivers-standings">
               <h4>DRIVER_STANDINGS</h4>
+            </NavLink>
+            <NavLink className="nav-link" to="/constructors-standings">
+              <h4>CONSTRUCTORS_STANDINGS</h4>
             </NavLink>
           </Nav>
         </Container>
