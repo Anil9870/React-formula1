@@ -12,6 +12,9 @@ const Constructors = ({ constructors, fecthConstructors }) => {
     const [year, setYear] = useState(new Date().getFullYear());
     useEffect(() => {
         fecthConstructors(year);
+        return () => {
+            console.log("unmounting");
+        }
     }, []);
 
     const renderConstructors = constructors.constructors.map((constructor) => {
@@ -42,23 +45,22 @@ const Constructors = ({ constructors, fecthConstructors }) => {
 
     return (
         <div className="container">
-            {constructors.isLoading && constructors.errMess === null ? <Loader /> :
-                <div>
-                    <div className="row">
-                        <div className="col-6">
-                            <form onSubmit={e => handleOnSubmit(e)}>
-                                <div class="form-group">
-                                    <input type="text" onChange={(e) => setYear(e.target.value)} class="form-control" id="searchText" placeholder="Enter Year To Get Constructor Details" />
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                        </div>
-                        <div className="col">
-                            <h1>F1 CONSTRUCTORS LIST</h1>
-                        </div>
+            <div>
+                <div className="row">
+                    <div className="col-6">
+                        <form onSubmit={e => handleOnSubmit(e)}>
+                            <div class="form-group">
+                                <input type="text" onChange={(e) => setYear(e.target.value)} class="form-control" id="searchText" placeholder="Enter Year To Get Constructor Details" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
-                    {renderConstructors}
-                </div>}
+                    <div className="col">
+                        <h1>F1 CONSTRUCTORS LIST</h1>
+                    </div>
+                </div>
+                {constructors.isLoading ? <Loader /> : renderConstructors}
+            </div>
         </div>
     )
 }

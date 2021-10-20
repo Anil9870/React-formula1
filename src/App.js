@@ -1,11 +1,12 @@
 import './App.css';
-import CurrentSeasonDrivers from './components/CurrentSeasonDrivers';
+import CurrentSeasonDrivers from './components/SeasonDrivers';
 import { BrowserRouter as Router, Switch,Route,Redirect } from "react-router-dom";
 import Header from './components/Header';
 import Home from './components/Home';
-import Constructors from './components/Constructors';
+import Constructors from './components/SeasonConstructors';
 import { Provider } from "react-redux";
 import {ConfigureStore} from './redux/ConfigureStore';
+import SeasonDriverStandings from './components/SeasonDriverStandings';
 
 const store = ConfigureStore();
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/home" component={Home}/>
           <Route exact path="/drivers" component={CurrentSeasonDrivers}/>
           <Route exact path="/constructors" component={Constructors}/>
+          <Route exact path="/drivers-standings" component={SeasonDriverStandings}/>
           <Redirect to="/home" />
         </Switch>
       </Router>

@@ -7,7 +7,7 @@ export const Drivers = (
     switch (action.type) {
         case ActionTypes.DRIVERS_LOADING:
             return {
-                ...state, isLoading: true, errMess: null, drivers: []
+                ...state, isLoading: true, errMess: null
             }
         case ActionTypes.ADD_DRIVERS:
             return {

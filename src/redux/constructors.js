@@ -7,7 +7,7 @@ export const Constructors = (
     switch (action.type) {
         case ActionTypes.CONSTRUCTORS_LOADING:
             return {
-                ...state, isLoading: true, errMess: null, constructors: []
+                ...state, isLoading: true, errMess: null
             }
         case ActionTypes.CONSTRUCTORS_FAILED:
             return {

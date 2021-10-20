@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Button, Form } from 'react-bootstrap';
+import { Card, Button} from 'react-bootstrap';
 import Loader from './Loader';
 import { connect } from "react-redux";
 import { fetchDrivers } from '../redux/ActionCreators';
@@ -11,6 +11,9 @@ const CurrentSeasonDrivers = ({ drivers, fetchDrivers }) => {
 
     useEffect(() => {
         fetchDrivers(year);
+        return () => {
+            console.log("unmounting");
+        }
     }, []);
 
     const getDrivers = drivers.drivers.map((driver, id) => {
@@ -45,26 +48,23 @@ const CurrentSeasonDrivers = ({ drivers, fetchDrivers }) => {
 
     return (
         <div className="container">
-            {drivers.isLoading === true && drivers.errMess === null ? <Loader /> :
-                <div>
-                    <div className="row">
-                        <div className="col-6">
-                            <form onSubmit={e => handleOnSubmit(e)}>
-                                <div class="form-group">
-                                    <input type="text" onChange={(e) => setYear(e.target.value)} class="form-control" id="searchText" placeholder="Enter Year To Get Driver Details" />
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                        </div>
-                        <div className="col">
-                        <h1>F1 DRIVERS LIST</h1>
-                        </div>
+            <div>
+                <div className="row">
+                    <div className="col-6">
+                        <form onSubmit={e => handleOnSubmit(e)}>
+                            <div class="form-group">
+                                <input type="text" onChange={(e) => setYear(e.target.value)} class="form-control" id="searchText" placeholder="Enter Year To Get Driver Details" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
-                    
-                    {getDrivers}
-                    {console.log(drivers)}
+                    <div className="col">
+                        <h1>F1 DRIVERS LIST</h1>
+                    </div>
                 </div>
-            }
+
+                {drivers.isLoading === true ? <Loader /> : getDrivers}
+            </div>
         </div>
     )
 }

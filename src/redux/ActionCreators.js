@@ -98,4 +98,51 @@ export const constructorsFailed = (error) => ({
     payload: error
 });
 
+const parseStandings = (driverStandings) => {
+    const processedDriversStandings = [];
+    var processedDriverStanding = {};
+    for (let i = 0; i < driverStandings.length; i++) {
+        processedDriverStanding = {};
+        processedDriverStanding.position = driverStandings[i].attributes.position;
+        processedDriverStanding.points = driverStandings[i].attributes.points;
+        processedDriverStanding.wins = driverStandings[i].attributes.wins;
+        let driver = driverStandings[i].children[0];
+        processedDriverStanding.givenName = driver.children[1].value;
+        processedDriverStanding.FamilyName = driver.children[2].value;
+        let constructor = driverStandings[i].children[1];
+        processedDriverStanding.constructor = constructor.children[0].value;
+        processedDriversStandings.push(processedDriverStanding);
+
+    }
+    console.log(processedDriversStandings);
+    return processedDriversStandings;
+}
+
+
+export const fetchDriversStandings = (year) => (dispatch) => {
+    dispatch(driversStandingsLoading());
+
+    return axios.get(`http://ergast.com/api/f1/${year}/driverStandings`)
+        .then((response) => {
+            const jsonDataFromXml = new XMLParser().parseFromString(response.data);
+            return parseStandings(jsonDataFromXml.children[0].children[0].children);
+        })
+        .then((response) => dispatch(addDriversStandings(response)))
+        .catch((error) => dispatch(driversStandingsFailed(error)));
+};
+
+export const driversStandingsLoading = () => ({
+    type: ActionTypes.DRIVERS_STANDINGS_LOADING,
+});
+
+export const addDriversStandings = (standings) => ({
+    type: ActionTypes.ADD_DRIVERS_STANDINGS,
+    payload: standings
+});
+
+export const driversStandingsFailed = (error) => ({
+    type: ActionTypes.DRIVERS_STANDINGS_FAILED,
+    payload: error
+});
+
 
