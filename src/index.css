@@ -41,3 +41,11 @@ td,th {
 .home-corousel {
   margin-bottom: 30px;
 }
+.map {
+  height: 90vh;
+}
+
+.track-font {
+  font-size: 15px;
+}
+

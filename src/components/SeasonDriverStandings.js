@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import XMLParser from 'react-xml-parser';
 import { Table } from 'react-bootstrap';
 import Loader from './Loader';
 import { connect } from 'react-redux';

@@ -93,7 +93,7 @@ const SeasonConstructorStandings = () => {
                     </form>
                 </div>
                 <div className="col-6">
-                    <h1>Season Driver Standings</h1>
+                    <h1>Season Constructor Standings</h1>
                 </div>
             </div>
             <div>

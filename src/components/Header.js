@@ -29,6 +29,9 @@ const Header = props => {
             <NavLink className="nav-link" to="/constructors-standings">
               <h4>CONSTRUCTORS_STANDINGS</h4>
             </NavLink>
+            <NavLink className="nav-link" to="/tracks">
+              <h4>TRACKS</h4>
+            </NavLink>
           </Nav>
         </Container>
       </Navbar>

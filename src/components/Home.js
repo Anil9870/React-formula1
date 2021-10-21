@@ -26,7 +26,7 @@ const Home = props => {
                 <Card>
                     <div className="row">
                         <div className="col-5">
-                            <Card.Img className="home-img" src="images/mick.jpg" />
+                            <Card.Img className="home-img" src="images/legend.jpg" />
                         </div>
                         <div className="col-5">
                             <Card.Body>
