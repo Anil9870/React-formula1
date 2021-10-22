@@ -12,23 +12,23 @@ const Home = props => {
                 <HomeCarousel items={formulaImages} />
             </div>
             <div className="row">
-                <div className="col sm-4">
+                <div className="col-12 col-lg-4">
                     <img className="home-img" src="images/home1.jpg" alt="max" />
                 </div>
-                <div className="col sm-4">
+                <div className="col-12 col-lg-4">
                     <img className="home-img" src="images/home2.jpg" alt="max" />
                 </div>
-                <div className="col sm-4">
+                <div className="col-12 col-lg-4">
                     <img className="home-img" src="images/home3.jpg" alt="max" />
                 </div>
             </div>
             <div style={{ marginTop: '20px', marginBottom: '30px' }} className="row">
                 <Card>
                     <div className="row">
-                        <div className="col-5">
+                        <div className="col-12 col-lg-5">
                             <Card.Img className="home-img" src="images/legend.jpg" />
                         </div>
-                        <div className="col-5">
+                        <div className="col-12 col-lg-5">
                             <Card.Body>
                                 <Card.Title><h1>Meet the king of F1</h1></Card.Title>
                                 <Card.Text style={{ marginTop: '20px' }}>

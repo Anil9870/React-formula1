@@ -11,9 +11,6 @@ const CurrentSeasonDrivers = ({ drivers, fetchDrivers }) => {
 
     useEffect(() => {
         fetchDrivers(year);
-        return () => {
-            console.log("unmounting");
-        }
     }, []);
 
     const getDrivers = drivers.drivers.map((driver, id) => {
